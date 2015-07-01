@@ -1,24 +1,34 @@
-/*******************************************************************************/
-/**
-
-\file       GPIO.h
-\brief      Macro definitions for registers access and I/O handling
-\author     Gilberto Ochoa
-\version    1.2
-\date       23/06/2015
-*/
-/*******************************************************************************/
+/*============================================================================*/
+/*                        SV C BC SOFTWARE GROUP                              */
+/*============================================================================*/
+/*                        OBJECT SPECIFICATION                                */
+/*============================================================================*
+* C Include:        GPIO.h
+* version:          1.0
+* created_by:       Gilberto Ochoa
+* date_created:     Mon Jun 22 2015
+*=============================================================================*/
+/* DESCRIPTION : Macro definitions for registers access and I/O handling      */
+/*============================================================================*/
+/* FUNCTION COMMENT : Header of the GPIO.c file                               */
+/*                                                                            */
+/*============================================================================*/
+/*                               OBJECT HISTORY                               */
+/*============================================================================*/
+/*  REVISION |   DATE      |                               |      AUTHOR      */
+/*----------------------------------------------------------------------------*/
+/*  1.0      | 22/06/2015  |                               | Gilberto Ochoa   */
+/*                                                                            */
+/*============================================================================*/
 
 #ifndef _GPIO_H        /*prevent duplicated includes*/
 #define _GPIO_H
 
-/*-- Includes ----------------------------------------------------------------*/
+/* Includes */
 
 /** Core modules */
 /** MCU derivative information */
 #include "MCU_derivative.h"
-/** Variable types and common definitions */
-#include "typedefs.h"
 
 
 /*-- Defines -----------------------------------------------------------------*/
@@ -58,15 +68,55 @@
 #define BTN_INACTIVE                1
 
 
+/* Exported types and constants */
+/* ---------------------------- */
+
+/* Types definition */
+/* typedef */
 
 
-/*-- Function Prototypes -----------------------------------------------------*/
+/*==================================================*/ 
+/* Declaration of exported constants                */
+/*==================================================*/ 
+/* BYTE constants */
+
+
+/* WORD constants */
+
+
+/* LONG and STRUCTURE constants */
+
+
+
+/*======================================================*/ 
+/* Definition of RAM variables                          */
+/*======================================================*/ 
+/* BYTES */
+
+
+/* WORDS */
+
+
+/* LONGS and STRUCTURES */
+
+
+/*======================================================*/ 
+/* close variable declaration sections                  */
+/*======================================================*/ 
+
+/* Exported functions prototypes and macros */
+/* ---------------------------------------- */
+
+/* Functions prototypes */
 void EmbIOs_Config(void);
 void LED_ON(T_UBYTE lub_Num);
 void LED_OFF(T_UBYTE lub_Num);
 void LED_TOGGLE(T_UBYTE lub_Num);
 
+/* Functions macros */
 
+
+/* Exported defines */
 
 
 #endif /* _GPIO_H */

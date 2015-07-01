@@ -87,7 +87,7 @@ void selector_up(void);
 
 /* Exported functions prototypes */
 /* ----------------------------- */
-//void Evaluate_bounce_button(void);
+
 
 /* Exported functions */
 /* ------------------ */

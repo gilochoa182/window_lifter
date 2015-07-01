@@ -1,12 +1,30 @@
-/*******************************************************************************/
-/**
-\file       GPIO.c
-\brief      General purpose IO functions
-\author     Gilberto Ochoa
-\version    1.2
-\date       23/06/2015
-*/
-/****************************************************************************************************/
+/*============================================================================*/
+/*                        SV C CE SOFTWARE GROUP                              */
+/*============================================================================*/
+/*                        OBJECT SPECIFICATION                                */
+/*============================================================================*
+* C Source:        GPIO,c         
+* version:         1.0
+* created_by:      Gilberto Ochoa
+* date_created:    Mon Jun 22 2015
+*=============================================================================*/
+/* DESCRIPTION :                                                              */
+/*============================================================================*/
+/* FUNCTION COMMENT : This file configurated GPIO as output and input         */
+/*                                                                            */
+/*                                                                            */
+/*============================================================================*/
+/*                               OBJECT HISTORY                               */
+/*============================================================================*/
+/*  REVISION |   DATE      |                               |      AUTHOR      */
+/*----------------------------------------------------------------------------*/
+/*  1.0      | 22/06/2015  |                               | Gilberto Ochoa   */
+/* Start of this file                                                         */
+/*============================================================================*/
+/*  1.1      | 30/06/2015  |                               | Gilberto Ochoa   */
+/* Organization of Private functions prototypes                               */
+/*============================================================================*/
+
 
 /*****************************************************************************************************
 * Include files
@@ -17,22 +35,65 @@
 /** MCU derivative information */
 #include "MCU_derivative.h"
 
-/** Variable types and common definitions */
-#include "typedefs.h"
-
 /** Own headers */
 /* GPIO routines prototypes */ 
 #include "GPIO.h"
 
 
-/****************************************************************************************************/
-/**
-* \brief    Configuration diferentes components Embedded 
-* \brief    called periodically to operate. 
-* \author   Gilberto Ochoa
-* \param    void
-* \return   void
-*/
+/* Functions macros, constants, types and datas         */
+/* ---------------------------------------------------- */
+/* Functions macros */
+
+/*==================================================*/ 
+/* Definition of constants                          */
+/*==================================================*/ 
+/* BYTE constants */
+
+
+/* WORD constants */
+
+
+/* LONG and STRUCTURE constants */
+
+
+
+/*======================================================*/ 
+/* Definition of RAM variables                          */
+/*======================================================*/ 
+/* BYTE RAM variables */
+
+/* WORD RAM variables */
+
+
+/* LONG and STRUCTURE RAM variables */
+
+
+/*======================================================*/ 
+/* close variable declaration sections                  */
+/*======================================================*/ 
+
+/* Private defines */
+
+
+/* Private functions prototypes */
+/* ---------------------------- */
+
+
+/* Exported functions prototypes */
+/* ----------------------------- */
+
+
+/* Exported functions */
+/* ------------------ */
+/**************************************************************
+ *  Name                 :	EmbIOs_Config
+ *  Created by           :  Gilberto Ochoa
+ *  Description          :  Configuration diferentes components Embedded
+ *  Description          :  called periodically to operate.
+ *  Parameters           :  void
+ *  Return               :  void
+ *  Critical/explanation :  NO
+ **************************************************************/
 void EmbIOs_Config(void)
 {
 	T_UBYTE lub_i;
@@ -54,41 +115,52 @@ void EmbIOs_Config(void)
   	SIU.PCR[_BUTTON4].R = 0x100;	
 }
 
-/****************************************************************************************************/
-/**
-* \brief    Set LEDS ON
-* \brief    
-* \author   Gilberto Ochoa
-* \param    Num
-* \return   void
-*/
+
+
+/* Exported functions */
+/* ------------------ */
+/**************************************************************
+ *  Name                 :	LED_ON
+ *  Created by           :  Gilberto Ochoa
+ *  Description          :  Set LEDS ON
+ *  Parameters           :  T_UBYTE lub_Num
+ *  Return               :  void
+ *  Critical/explanation :  NO
+ **************************************************************/
 void LED_ON(T_UBYTE lub_Num)
 {
 	SIU.GPDO[lub_Num].B.PDO = on;
 }
 
 
-/****************************************************************************************************/
-/**
-* \brief    Set LEDS OFF
-* \brief    
-* \author   Gilberto Ochoa
-* \param    void
-* \return   void
-*/
+
+/* Exported functions */
+/* ------------------ */
+/**************************************************************
+ *  Name                 :	LED_OFF
+ *  Created by           :  Gilberto Ochoa
+ *  Description          :  Set LEDS OFF
+ *  Parameters           :  T_UBYTE lub_Num
+ *  Return               :  void
+ *  Critical/explanation :  NO
+ **************************************************************/
 void LED_OFF(T_UBYTE lub_Num)
 {
 	SIU.GPDO[lub_Num].B.PDO = off;
 }
 
-/****************************************************************************************************/
-/**
-* \brief    Set LEDS TOGGLE
-* \brief    
-* \author   Gilberto Ochoa
-* \param    Num
-* \return   void
-*/
+
+
+/* Exported functions */
+/* ------------------ */
+/**************************************************************
+ *  Name                 :	LED_TOGGLE
+ *  Created by           :  Gilberto Ochoa
+ *  Description          :  Set LEDS TOGGLE
+ *  Parameters           :  T_UBYTE lub_Num
+ *  Return               :  void
+ *  Critical/explanation :  NO
+ **************************************************************/
 void LED_TOGGLE(T_UBYTE lub_Num)
 {
 	SIU.GPDO[lub_Num].B.PDO ^= off;

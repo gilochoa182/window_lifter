@@ -1,30 +1,51 @@
-/*******************************************************************************/
-/**
-\file       window_lifter.h
-\brief      
-\author     Gilberto Ochoa
-\version    1.0
-\date       25/06/2015
-*/
-/*******************************************************************************/
+/*============================================================================*/
+/*                        SV C BC SOFTWARE GROUP                              */
+/*============================================================================*/
+/*                        OBJECT SPECIFICATION                                */
+/*============================================================================*
+* C Include:        window_lifter.h
+* version:          1.0
+* created_by:       Gilberto Ochoa
+* date_created:     Mon Jun 22 2015
+*=============================================================================*/
+/* DESCRIPTION : Header of the control window lifter                          */
+/*============================================================================*/
+/* FUNCTION COMMENT : Header of the window_lifter.c file                      */
+/*                                                                            */
+/*============================================================================*/
+/*                               OBJECT HISTORY                               */
+/*============================================================================*/
+/*  REVISION |   DATE      |                               |      AUTHOR      */
+/*----------------------------------------------------------------------------*/
+/*  1.0      | 22/06/2015  |                               | Gilberto Ochoa   */
+/*                                                                            */
+/*============================================================================*/
 
 #ifndef _WINDOW_LIFTER_H        /*prevent duplicated includes*/
 #define _WINDOW_LIFTER_H
 
-/*-- Includes ----------------------------------------------------------------*/
+/* Includes */
 
-#include "typedefs.h"
+/*-- Defines -----------------------------------------------------------------*/
 
-#include "GPIO.h"
-
-/** Core modules */
-/** Variable types and common definitions */
-
-
-/*-- Variables ---------------------------------------------------------------*/
+#define ZERO_MILLISECONDS           0
+#define TEN_MILLISECONDS            10
+#define FIVE_HUNDRED_MILLISECONDS   500
+#define FOUR_HUNDRED_MILLISECONDS   400
+#define FIVE_SECONDS                5000
 
 
-/*-- Types Definitions -------------------------------------------------------*/
+/* Exported types and constants */
+/* ---------------------------- */
+
+/* Types definition */
+/* typedef */
+
+
+/*==================================================*/ 
+/* Declaration of exported constants                */
+/*==================================================*/ 
+/* BYTE constants */
 
 enum ESTATUS
 {
@@ -37,17 +58,40 @@ enum ESTATUS
 	DELAY_5_SECONDS
 };
 
-/*-- Defines -----------------------------------------------------------------*/
+/* WORD constants */
 
-#define ZERO_MILLISECONDS           0
-#define TEN_MILLISECONDS            10
-#define FIVE_HUNDRED_MILLISECONDS   500
-#define FOUR_HUNDRED_MILLISECONDS   400
-#define FIVE_SECONDS                5000
 
-/*-- Function Prototypes -----------------------------------------------------*/
+/* LONG and STRUCTURE constants */
 
-void State_Machine(void);
+
+
+/*======================================================*/ 
+/* Definition of RAM variables                          */
+/*======================================================*/ 
+/* BYTES */
+
+
+/* WORDS */
+
+
+/* LONGS and STRUCTURES */
+
+
+/*======================================================*/ 
+/* close variable declaration sections                  */
+/*======================================================*/ 
+
+/* Exported functions prototypes and macros */
+/* ---------------------------------------- */
+
+/* Functions prototypes */
+extern void State_Machine(void);
+
+/* Functions macros */
+
+
+/* Exported defines */
+
 
 #endif /* _WINDOW_LIFTER_H */
 

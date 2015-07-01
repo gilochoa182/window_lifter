@@ -26,6 +26,8 @@
 /** Own headers */
 #include "window_lifter.h"
 
+#include "GPIO.h"
+
 /* Functions macros, constants, types and datas         */
 /* ---------------------------------------------------- */
 /* Functions macros */
