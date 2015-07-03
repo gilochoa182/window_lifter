@@ -81,8 +81,6 @@ extern T_UWORD ruw_time_button;
 
 /* Private functions prototypes */
 /* ---------------------------- */
-void selector_down(void);
-void selector_up(void);
 
 
 /* Exported functions prototypes */
@@ -106,7 +104,12 @@ void Evaluate_bounce_button(void)
 		ruw_time_button++;                       /*Increases time to 10 milliseconds*/
 		if(ruw_time_button>=TEN_MILLISECONDS)
 		{
-			selector_down();                     /* In this Part the time is 10 milliseconds*/
+			rub_State=AUTOMATIC_DOWN_ACTION;
+		}
+		
+		else
+		{
+			//Do nothing
 		}
 	}
 			
@@ -116,7 +119,12 @@ void Evaluate_bounce_button(void)
 		ruw_time_button++;	             /*Increases time to 10 milliseconds*/
 		if(ruw_time_button>=TEN_MILLISECONDS)
 		{
-			selector_up();
+			rub_State=AUTOMATIC_UP_ACTION;
+		}
+		
+		else
+		{
+			//Do nothing
 		}
 	}
 			
@@ -125,63 +133,3 @@ void Evaluate_bounce_button(void)
 		ruw_time_button=ZERO_MILLISECONDS;
 	}
 }    /* End Evaluate_bounce_button*/
-
-
-
-/* Private functions */
-/* ----------------- */
-/**************************************************************
- *  Name                 : selector_down
- *  Created by           : Gilberto Ochoa
- *  Description          : Evaluate if the button is pressed for 500 Milliseconds to send the next state
- *  Parameters           : void
- *  Return               : void
- *  Critical/explanation : NO
- **************************************************************/
-void selector_down(void)
-{
-	if(BUTTON_DOWN == BTN_ACTIVE)
-	{
-		ruw_time_button++;     /* In this Part the time is 11 milliseconds*/
-		if((ruw_time_button>TEN_MILLISECONDS) && (ruw_time_button<FIVE_HUNDRED_MILLISECONDS)) 
-		{
-			rub_State=AUTOMATIC_DOWN_ACTION;
-		}
-	}
-			
-	else
-	{
-		rub_State=IDLE;
-		ruw_time_button=ZERO_MILLISECONDS;
-	}
-}   /* End selector_down*/
-
-
-
-/* Private functions */
-/* ----------------- */
-/**************************************************************
- *  Name                 : selector_up
- *  Created by           : Gilberto Ochoa
- *  Description          : Evaluate if the button is pressed for 500 Milliseconds to send the next state
- *  Parameters           : void
- *  Return               : void
- *  Critical/explanation : NO
- **************************************************************/
-void selector_up(void)
-{
-	if(BUTTON_UP == BTN_ACTIVE)
-	{	
-		ruw_time_button++;   /* In this Part the time is 11 seconds*/
-		if((ruw_time_button>TEN_MILLISECONDS) && (ruw_time_button<FIVE_HUNDRED_MILLISECONDS))
-		{
-			rub_State=AUTOMATIC_UP_ACTION;
-	    }
-	}
-			
-	else
-	{
-		ruw_time_button=ZERO_MILLISECONDS;
-		rub_State=IDLE;
-	}
-}   /* End selector_up*/

@@ -127,10 +127,10 @@ void EmbIOs_Config(void)
  *  Return               :  void
  *  Critical/explanation :  NO
  **************************************************************/
-void LED_ON(T_UBYTE lub_Num)
+/*void LED_ON(T_UBYTE lub_Num)
 {
 	SIU.GPDO[lub_Num].B.PDO = on;
-}
+}*/
 
 
 
@@ -144,10 +144,10 @@ void LED_ON(T_UBYTE lub_Num)
  *  Return               :  void
  *  Critical/explanation :  NO
  **************************************************************/
-void LED_OFF(T_UBYTE lub_Num)
+/*void LED_OFF(T_UBYTE lub_Num)
 {
 	SIU.GPDO[lub_Num].B.PDO = off;
-}
+}*/
 
 
 
@@ -161,7 +161,7 @@ void LED_OFF(T_UBYTE lub_Num)
  *  Return               :  void
  *  Critical/explanation :  NO
  **************************************************************/
-void LED_TOGGLE(T_UBYTE lub_Num)
+/*void LED_TOGGLE(T_UBYTE lub_Num)
 {
 	SIU.GPDO[lub_Num].B.PDO ^= off;
-}
+}*/

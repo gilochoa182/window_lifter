@@ -33,6 +33,8 @@
 #define FIVE_HUNDRED_MILLISECONDS   500
 #define FOUR_HUNDRED_MILLISECONDS   400
 #define FIVE_SECONDS                5000
+#define EXCEEDED_UP                 255
+#define EXCEEDED_DOWN               10
 
 
 /* Exported types and constants */
