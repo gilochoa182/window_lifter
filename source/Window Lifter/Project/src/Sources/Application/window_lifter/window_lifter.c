@@ -19,6 +19,9 @@
 /*----------------------------------------------------------------------------*/
 /*  1.0      | 22/06/2015  |                               | Gilberto Ochoa   */
 /*============================================================================*/
+/*  1.1      | 02/07/2015  | It is renamed one state of    | Gilberto Ochoa   */
+/*           |             | the State Machine             |                  */
+/*============================================================================*/
 
 /* Includes */
 /* -------- */
@@ -49,10 +52,10 @@
 /* Definition of RAM variables                          */
 /*======================================================*/ 
 /* BYTE RAM variables */
-T_UBYTE rub_State=IDLE, rub_LED_Position=0;
+T_UBYTE rub_State=IDLE, rub_LED_Position=_LED1;
 
 /* WORD RAM variables */
-T_UWORD ruw_time_button=0, ruw_time_transition=0;
+T_UWORD ruw_time_button=ZERO_MILLISECONDS, ruw_time_transition=ZERO_MILLISECONDS;
 
 /* LONG and STRUCTURE RAM variables */
 
@@ -70,8 +73,8 @@ void window_up(void);
 void window_down(void);
 void manual_up(void);
 void manual_down(void);
-void automatic_up_action(void);
-void automatic_down_action(void);
+void Selector_up(void);
+void Selector_down(void);
 void aintipinch(void);
 void delay_5_seconds(void);
 
@@ -105,13 +108,13 @@ void State_Machine(void)
 			break;
 			
 			
-		case AUTOMATIC_UP_ACTION:
-			automatic_up_action();
+		case SELECTOR_UP:
+			Selector_up();
 			break;
 			
 			
-		case AUTOMATIC_DOWN_ACTION:
-			automatic_down_action();
+		case SELECTOR_DOWN:
+			Selector_down();
 			break;
 			
 			
@@ -133,7 +136,7 @@ void State_Machine(void)
 /**************************************************************
  *  Name                 : window_down
  *  Created by           : Gilberto Ochoa
- *  Description          :
+ *  Description          : This function controls the movement down of the window
  *  Parameters           : Void
  *  Return               : Void
  *  Critical/explanation : No
@@ -163,7 +166,7 @@ void window_down(void)
 			//Do nothing
 		}
 			
-		if(rub_LED_Position==EXCEEDED_DOWN)
+		if(rub_LED_Position==OPEN)
 		{
 			rub_State=IDLE;
 			rub_LED_Position=_LED10;
@@ -186,7 +189,7 @@ void window_down(void)
 /**************************************************************
  *  Name                 : window_up
  *  Created by           : Gilberto Ochoa
- *  Description          :
+ *  Description          : This function controls the movement UP of the window
  *  Parameters           : Void
  *  Return               : Void
  *  Critical/explanation : No
@@ -224,7 +227,7 @@ void window_up(void)
 				//Do nothing
 			}
 			
-			if(rub_LED_Position==EXCEEDED_UP)
+			if(rub_LED_Position==CLOSED)
 			{
 				rub_State=IDLE;
 				rub_LED_Position=_LED1;
@@ -248,7 +251,7 @@ void window_up(void)
 /**************************************************************
  *  Name                 : manual_up
  *  Created by           : Gilberto Ochoa
- *  Description          :
+ *  Description          : Evaluate if the BUTTON_UP is pressed to continue UP
  *  Parameters           : Void
  *  Return               : Void
  *  Critical/explanation : No
@@ -275,7 +278,7 @@ void manual_up(void)
 /**************************************************************
  *  Name                 : manual_down
  *  Created by           : Gilberto Ochoa
- *  Description          :
+ *  Description          : Evaluate if the BUTTON_DOWN is pressed to continue DOWN
  *  Parameters           : Void
  *  Return               : Void
  *  Critical/explanation : No
@@ -302,12 +305,12 @@ void manual_down(void)
 /**************************************************************
  *  Name                 : automatic_up_action
  *  Created by           : Gilberto Ochoa
- *  Description          :
+ *  Description          : Evaluate the time that the button was pressed to select (Manual or Automatic)
  *  Parameters           : Void
  *  Return               : Void
  *  Critical/explanation : No
  **************************************************************/
-void automatic_up_action(void)
+void Selector_up(void)
 {
 	if(BUTTON_UP == BTN_ACTIVE)
 	{
@@ -337,12 +340,12 @@ void automatic_up_action(void)
 /**************************************************************
  *  Name                 : automatic_down_action
  *  Created by           : Gilberto Ochoa
- *  Description          :
+ *  Description          : Evaluate the time that the button was pressed to select (Manual or Automatic)
  *  Parameters           : Void
  *  Return               : Void
  *  Critical/explanation : No
  **************************************************************/
-void automatic_down_action(void)
+void Selector_down(void)
 {
 	if(BUTTON_DOWN == BTN_ACTIVE)
 	{
@@ -371,7 +374,7 @@ void automatic_down_action(void)
 /**************************************************************
  *  Name                 : aintipinch
  *  Created by           : Gilberto Ochoa
- *  Description          :
+ *  Description          : Detected if the signal is present to open the window
  *  Parameters           : Void
  *  Return               : Void
  *  Critical/explanation : No
@@ -391,7 +394,7 @@ void aintipinch(void)
 			ruw_time_transition=ZERO_MILLISECONDS;
 		}
 			
-		if(rub_LED_Position==EXCEEDED_DOWN)
+		if(rub_LED_Position==OPEN)
 		{
 			rub_LED_Position=_LED10;
 			ruw_time_button=ZERO_MILLISECONDS;
@@ -408,17 +411,18 @@ void aintipinch(void)
 /**************************************************************
  *  Name                 : delay_5_seconds
  *  Created by           : Gilberto Ochoa
- *  Description          :
+ *  Description          : Generates a delay for 5 seconds to inactive the buttons
  *  Parameters           : Void
  *  Return               : Void
  *  Critical/explanation : No
  **************************************************************/
 void delay_5_seconds(void)
 {
-	ruw_time_button++;
-	if(ruw_time_button==FIVE_SECONDS)
+	static T_UWORD luw_time_delay;
+	luw_time_delay++;
+	if(luw_time_delay==FIVE_SECONDS)
 	{
-		ruw_time_button=ZERO_MILLISECONDS;
+		luw_time_delay=ZERO_MILLISECONDS;
 		rub_State=IDLE;
 	}
 }   /**************** End function delay_5_seconds ***************/

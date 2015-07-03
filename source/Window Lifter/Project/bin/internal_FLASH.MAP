@@ -41,17 +41,19 @@ Link map of __start
      4] rub_State (object,global) found in window_lifter.o 
      4] @13 (object,local) found in window_lifter.o 
      4] Evaluate_bounce_button (func,global) found in button.o 
-      5] ruw_time_button (object,global) found in window_lifter.o 
+      5] @LOCAL@Evaluate_bounce_button__Fv@luw_time_button (object,local) found in button.o 
      4] manual_up (func,global) found in window_lifter.o 
       5] window_up (func,global) found in window_lifter.o 
+       6] ruw_time_button (object,global) found in window_lifter.o 
        6] ruw_time_transition (object,global) found in window_lifter.o 
        6] rub_LED_Position (object,global) found in window_lifter.o 
      4] manual_down (func,global) found in window_lifter.o 
       5] window_down (func,global) found in window_lifter.o 
-     4] automatic_up_action (func,global) found in window_lifter.o 
-     4] automatic_down_action (func,global) found in window_lifter.o 
+     4] Selector_up (func,global) found in window_lifter.o 
+     4] Selector_down (func,global) found in window_lifter.o 
      4] aintipinch (func,global) found in window_lifter.o 
      4] delay_5_seconds (func,global) found in window_lifter.o 
+      5] @LOCAL@delay_5_seconds__Fv@luw_time_delay (object,local) found in window_lifter.o 
     3] PIT_channel_configure (func,global) found in PIT.o 
      4] PIT_Callback (object,global) found in PIT.o 
      4] PIT_channel_0_isr (func,global) found in PIT.o 
@@ -200,8 +202,8 @@ Link map of __start
   00000518 0000c8 00002518 00000bf8  2 window_up 	window_lifter.o 
   000005e0 000056 000025e0 00000cc0  2 manual_up 	window_lifter.o 
   00000636 000058 00002636 00000d16  2 manual_down 	window_lifter.o 
-  0000068e 000054 0000268e 00000d6e  2 automatic_up_action 	window_lifter.o 
-  000006e2 000054 000026e2 00000dc2  2 automatic_down_action 	window_lifter.o 
+  0000068e 000054 0000268e 00000d6e  2 Selector_up 	window_lifter.o 
+  000006e2 000054 000026e2 00000dc2  2 Selector_down 	window_lifter.o 
   00000736 0000a0 00002736 00000e16  2 aintipinch 	window_lifter.o 
   000007d6 000020 000027d6 00000eb6  2 delay_5_seconds 	window_lifter.o 
   000007f6 000000 000027f6 00000ed6  1 .text.103 	window_lifter.o 
@@ -389,11 +391,15 @@ extabindex section layout
   Starting        Virtual  File
   address  Size   address  offset
   ---------------------------------
-  00000000 000006 40001360 00001020  1 .sbss 	window_lifter.o 
-  00000000 000001 40001360 00001020  1 rub_State 	window_lifter.o 
-  00000001 000001 40001361 00001021  1 rub_LED_Position 	window_lifter.o 
-  00000002 000002 40001362 00001022  2 ruw_time_button 	window_lifter.o 
-  00000004 000002 40001364 00001024  2 ruw_time_transition 	window_lifter.o 
+  00000000 000002 40001360 00001020  1 .sbss 	button.o 
+  00000000 000002 40001360 00001020  2 @LOCAL@Evaluate_bounce_button__Fv@luw_time_button 	button.o 
+  00000002 000006 40001368 00001028  8 *fill*
+  00000008 000008 40001368 00001028  1 .sbss 	window_lifter.o 
+  00000008 000001 40001368 00001028  1 rub_State 	window_lifter.o 
+  00000009 000001 40001369 00001029  1 rub_LED_Position 	window_lifter.o 
+  0000000a 000002 4000136a 0000102a  2 ruw_time_button 	window_lifter.o 
+  0000000c 000002 4000136c 0000102c  2 ruw_time_transition 	window_lifter.o 
+  0000000e 000002 4000136e 0000102e  2 @LOCAL@delay_5_seconds__Fv@luw_time_delay 	window_lifter.o 
 
 
 .sdata2 section layout
@@ -412,8 +418,8 @@ extabindex section layout
   Starting        Virtual  File
   address  Size   address  offset
   ---------------------------------
-  00000000 000020 40001368 00001020  1 .bss 	PIT.o 
-  00000000 000020 40001368 00001020  8 PIT_Callback 	PIT.o 
+  00000000 000020 40001370 00001020  1 .bss 	PIT.o 
+  00000000 000020 40001370 00001020  8 PIT_Callback 	PIT.o 
 
 
 Memory map:
@@ -433,16 +439,16 @@ Memory map:
   .__uninitialized_intc_handlertable 40000000 00001340 00001000 00003000 00003000          0
                  .data 40001340 0000001c 00001000 00003000 00003000        165
                 .sdata 4000135c 00000000 00001020 0000301c 0000301c          0
-                 .sbss 40001360 00000008 00001020 00003020 00003020          0
-               .sdata2 40001368 00000000 00001020 00003020 00003020          0
-                .sbss2 40001368 00000000 00001020 00003020 00003020          0
-                  .bss 40001368 00000020 00001020 00003020 00003020          0
-      .PPC.EMB.apuinfo 000076d0 00000000 000086f0 0000a6f0 0000a6f0          0
+                 .sbss 40001360 00000010 00001020 00003020 00003020          0
+               .sdata2 40001370 00000000 00001020 00003020 00003020          0
+                .sbss2 40001370 00000000 00001020 00003020 00003020          0
+                  .bss 40001370 00000020 00001020 00003020 00003020          0
+      .PPC.EMB.apuinfo 00007760 00000000 00008780 0000a780 0000a780          0
          .debug_abbrev          00000129 00001020
-           .debug_info          0000236b 00001149
-           .debug_line          00003ada 000034b4
-            .debug_loc          0000052f 00006f8e
-       .debug_pubnames          00000512 000074bd
+           .debug_info          0000239e 00001149
+           .debug_line          00003ada 000034e7
+            .debug_loc          0000052f 00006fc1
+       .debug_pubnames          00000502 000074f0
 
 
 Linker generated symbols:
@@ -493,14 +499,14 @@ _e___uninitialized_intc_handlertable 40001340
              _f_sdata_rom 0000301c
                  _e_sdata 4000135c
                   _f_sbss 40001360
-                  _e_sbss 40001368
-                _f_sdata2 40001368
+                  _e_sbss 40001370
+                _f_sdata2 40001370
             _f_sdata2_rom 00003020
-                _e_sdata2 40001368
-                 _f_sbss2 40001368
-                 _e_sbss2 40001368
-                   _f_bss 40001368
-                   _e_bss 40001388
+                _e_sdata2 40001370
+                 _f_sbss2 40001370
+                 _e_sbss2 40001370
+                   _f_bss 40001370
+                   _e_bss 40001390
               _stack_addr 40014000
                _stack_end 40013000
                _heap_addr 40012000
@@ -508,6 +514,6 @@ _e___uninitialized_intc_handlertable 40001340
              _nbfunctions 0000002c
            SIZEOF_HEADERS 000002a0
                _SDA_BASE_ 4000935c
-              _SDA2_BASE_ 40009368
+              _SDA2_BASE_ 40009370
            _ABS_SDA_BASE_ 4000935c
-          _ABS_SDA2_BASE_ 40009368
+          _ABS_SDA2_BASE_ 40009370

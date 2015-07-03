@@ -33,8 +33,8 @@
 #define FIVE_HUNDRED_MILLISECONDS   500
 #define FOUR_HUNDRED_MILLISECONDS   400
 #define FIVE_SECONDS                5000
-#define EXCEEDED_UP                 255
-#define EXCEEDED_DOWN               10
+#define CLOSED                      255
+#define OPEN                        10
 
 
 /* Exported types and constants */
@@ -54,8 +54,8 @@ enum ESTATUS
 	IDLE,
 	MANUAL_UP,
 	MANUAL_DOWN,
-	AUTOMATIC_UP_ACTION,
-	AUTOMATIC_DOWN_ACTION,
+	SELECTOR_UP,
+	SELECTOR_DOWN,
 	ANTIPINCH,
 	DELAY_5_SECONDS
 };

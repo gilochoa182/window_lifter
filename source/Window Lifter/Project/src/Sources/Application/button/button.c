@@ -64,7 +64,6 @@
 /*======================================================*/ 
 /* BYTE RAM variables */
 extern T_UBYTE rub_State;
-extern T_UWORD ruw_time_button;
 
 /* WORD RAM variables */
 
@@ -99,12 +98,13 @@ extern T_UWORD ruw_time_button;
  **************************************************************/
 void Evaluate_bounce_button(void)
 {
+	static T_UWORD luw_time_button;
 	if((BUTTON_DOWN == BTN_ACTIVE) && (BUTTON_UP == BTN_INACTIVE))
 	{	
-		ruw_time_button++;                       /*Increases time to 10 milliseconds*/
-		if(ruw_time_button>=TEN_MILLISECONDS)
+		luw_time_button++;                       /*Increases time to 10 milliseconds*/
+		if(luw_time_button>=TEN_MILLISECONDS)
 		{
-			rub_State=AUTOMATIC_DOWN_ACTION;               
+			rub_State=SELECTOR_DOWN;               
 		}
 		
 		else
@@ -116,10 +116,10 @@ void Evaluate_bounce_button(void)
 			
 	else if((BUTTON_DOWN == BTN_INACTIVE) && (BUTTON_UP == BTN_ACTIVE))
 	{		
-		ruw_time_button++;	             /*Increases time to 10 milliseconds*/
-		if(ruw_time_button>=TEN_MILLISECONDS)
+		luw_time_button++;	             /*Increases time to 10 milliseconds*/
+		if(luw_time_button>=TEN_MILLISECONDS)
 		{
-			rub_State=AUTOMATIC_UP_ACTION;
+			rub_State=SELECTOR_UP;
 		}
 		
 		else
@@ -130,6 +130,6 @@ void Evaluate_bounce_button(void)
 			
 	else
 	{
-		ruw_time_button=ZERO_MILLISECONDS;
+		luw_time_button=ZERO_MILLISECONDS;
 	}
 }    /* End Evaluate_bounce_button*/
