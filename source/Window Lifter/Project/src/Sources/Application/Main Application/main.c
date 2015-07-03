@@ -32,7 +32,6 @@
 #include "MCU_derivative.h"
 #include    "PIT.h"
 
-
 /* Functions macros, constants, types and datas         */
 /* ---------------------------------------------------- */
 /* Functions macros */
@@ -75,7 +74,6 @@
 /* Exported functions prototypes */
 /* ----------------------------- */
 extern void State_Machine(void);
-extern void EmbIOs_Config(void);
 
 /****************************************************************************************************
 * Declaration of module wide FUNCTIONs 

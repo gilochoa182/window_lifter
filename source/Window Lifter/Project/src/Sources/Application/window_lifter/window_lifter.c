@@ -122,9 +122,6 @@ void State_Machine(void)
 		case DELAY_5_SECONDS:
 			delay_5_seconds();
 			break;
-			
-		default:
-			break;	
 	}  /* End switch */
 	
 }        /* End State_Machine */
@@ -160,8 +157,13 @@ void window_down(void)
 			rub_LED_Position++;
 			ruw_time_transition=ZERO_MILLISECONDS;
 		}
+		
+		else
+		{
+			//Do nothing
+		}
 			
-		else if(rub_LED_Position==EXCEEDED_DOWN)
+		if(rub_LED_Position==EXCEEDED_DOWN)
 		{
 			rub_State=IDLE;
 			rub_LED_Position=_LED10;
@@ -217,10 +219,15 @@ void window_up(void)
 				ruw_time_transition=ZERO_MILLISECONDS;
 			}
 			
-			else if(rub_LED_Position==EXCEEDED_UP)
+			else
+			{
+				//Do nothing
+			}
+			
+			if(rub_LED_Position==EXCEEDED_UP)
 			{
 				rub_State=IDLE;
-				rub_LED_Position=ZERO_MILLISECONDS;
+				rub_LED_Position=_LED1;
 				ruw_time_button=ZERO_MILLISECONDS;
 				LED_OFF(_LED_UP);
 			}	
@@ -229,8 +236,8 @@ void window_up(void)
 			{
 				//Do nothing
 			}
-		}  /* End else Evaliation Button Stop*/
-	}   /* End else Evaluation Anti Pinch */
+		}
+	}
 	
 }  /*************** End function window_up ***************/
 
@@ -318,10 +325,9 @@ void automatic_up_action(void)
 	
 	else
 	{
-		window_up();
+		window_up();	
 	}
 			
-		
 }   /*************** End function automatic_up_action ***************/
 
 
@@ -346,7 +352,7 @@ void automatic_down_action(void)
 			rub_State=MANUAL_DOWN;
 		}
 		
-		else 
+		else
 		{
 			//Do nothing
 		}
@@ -354,10 +360,8 @@ void automatic_down_action(void)
 	
 	else
 	{
-		window_down();
+		window_down();	
 	}
-	
-	
 }  /*************** End function automatic_down_action ***************/
 
 
@@ -387,23 +391,13 @@ void aintipinch(void)
 			ruw_time_transition=ZERO_MILLISECONDS;
 		}
 			
-		else if(rub_LED_Position==EXCEEDED_DOWN)
+		if(rub_LED_Position==EXCEEDED_DOWN)
 		{
 			rub_LED_Position=_LED10;
 			ruw_time_button=ZERO_MILLISECONDS;
 			LED_OFF(_LED_DOWN);
 			rub_State=DELAY_5_SECONDS;
 		}
-		
-		else
-		{
-			//Do nothing
-		}
-	}
-	
-	else 
-	{
-		//Do nothing
 	}
 }   /*************** End function antipinch ***************/
 
@@ -426,10 +420,5 @@ void delay_5_seconds(void)
 	{
 		ruw_time_button=ZERO_MILLISECONDS;
 		rub_State=IDLE;
-	}
-	
-	else
-	{
-		//Do nothing
 	}
 }   /**************** End function delay_5_seconds ***************/

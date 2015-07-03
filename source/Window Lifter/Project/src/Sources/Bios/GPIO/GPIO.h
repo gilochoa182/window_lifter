@@ -67,13 +67,14 @@
 #define BTN_ACTIVE                  0
 #define BTN_INACTIVE                1
 
+
+
 /** Set LED */ 
 #define LED_ON(channel)                     (SIU.GPDO[channel].B.PDO =  on)
 /** Clear LED */ 
 #define LED_OFF(channel)                    (SIU.GPDO[channel].B.PDO =  off)
 /** Toggle LED */ 
 #define LED_TOGGLE(channel)                 (SIU.GPDO[channel].B.PDO ^= off) 
-
 
 /* Exported types and constants */
 /* ---------------------------- */
@@ -115,10 +116,7 @@
 /* ---------------------------------------- */
 
 /* Functions prototypes */
-extern void EmbIOs_Config(void);
-//void LED_ON(T_UBYTE lub_Num);
-//void LED_OFF(T_UBYTE lub_Num);
-//void LED_TOGGLE(T_UBYTE lub_Num);
+void EmbIOs_Config(void);
 
 /* Functions macros */
 

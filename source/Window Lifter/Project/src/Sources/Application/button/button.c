@@ -104,7 +104,7 @@ void Evaluate_bounce_button(void)
 		ruw_time_button++;                       /*Increases time to 10 milliseconds*/
 		if(ruw_time_button>=TEN_MILLISECONDS)
 		{
-			rub_State=AUTOMATIC_DOWN_ACTION;
+			rub_State=AUTOMATIC_DOWN_ACTION;               
 		}
 		
 		else
