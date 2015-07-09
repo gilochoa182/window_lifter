@@ -22,6 +22,9 @@
 /*  1.1      | 02/07/2015  | It is renamed one state of    | Gilberto Ochoa   */
 /*           |             | the State Machine             |                  */
 /*============================================================================*/
+/*  1.2      | 03/07/2015  | Elimination some function and | Gilberto Ochoa   */
+/*           |             | become in Macros              |                  */
+/*============================================================================*/
 
 /* Includes */
 /* -------- */
