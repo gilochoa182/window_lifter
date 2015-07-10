@@ -306,7 +306,7 @@ void manual_down(void)
 /* Private functions */
 /* ----------------- */
 /**************************************************************
- *  Name                 : automatic_up_action
+ *  Name                 : Selector_up
  *  Created by           : Gilberto Ochoa
  *  Description          : Evaluate the time that the button was pressed to select (Manual or Automatic)
  *  Parameters           : Void
@@ -341,7 +341,7 @@ void Selector_up(void)
 /* Private functions */
 /* ----------------- */
 /**************************************************************
- *  Name                 : automatic_down_action
+ *  Name                 : Selector_down
  *  Created by           : Gilberto Ochoa
  *  Description          : Evaluate the time that the button was pressed to select (Manual or Automatic)
  *  Parameters           : Void

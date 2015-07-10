@@ -34,7 +34,6 @@
 
 /** MCU derivative information */
 #include "MCU_derivative.h"
-
 /** Own headers */
 /* GPIO routines prototypes */ 
 #include "GPIO.h"

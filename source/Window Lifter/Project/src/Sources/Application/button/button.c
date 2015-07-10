@@ -4,7 +4,7 @@
 /*                        OBJECT SPECIFICATION                                */
 /*============================================================================*
 * C Source:        button,c         
-* version:         1.0
+* version:         1.2
 * created_by:      Gilberto Ochoa
 * date_created:    Mon Jun 22 2015
 *=============================================================================*/
@@ -24,6 +24,9 @@
 /*  1.1      | 30/06/2015  |                               | Gilberto Ochoa   */
 /* Organization of Private functions prototypes                               */
 /*============================================================================*/
+/*  1.2      | 10/07/2015  |                               | Gilberto Ochoa   */
+/* Optimize memory                                                            */
+/*============================================================================*/
 
 
 /*****************************************************************************************************
@@ -37,9 +40,6 @@
 
 /* GPIO routines prototypes */ 
 #include "GPIO.h"
-
-/* GPIO routines prototypes */ 
-#include "window_lifter.h"
 
 
 /* Functions macros, constants, types and datas         */
@@ -98,12 +98,14 @@ extern T_UBYTE rub_State;
  **************************************************************/
 void Evaluate_bounce_button(void)
 {
-	static T_UWORD luw_time_button;
+	static T_UBYTE lub_time_button=0;
+	
 	if((BUTTON_DOWN == BTN_ACTIVE) && (BUTTON_UP == BTN_INACTIVE))
 	{	
-		luw_time_button++;                       /*Increases time to 10 milliseconds*/
-		if(luw_time_button>=TEN_MILLISECONDS)
+		lub_time_button++;                       /*Increases time to 10 milliseconds*/
+		if(lub_time_button>=TEN_MILLISECONDS)
 		{
+			lub_time_button=ZERO_MILLISECONDS;    /* Reset time*/
 			rub_State=SELECTOR_DOWN;               
 		}
 		
@@ -114,11 +116,12 @@ void Evaluate_bounce_button(void)
 	}
 			
 			
-	else if((BUTTON_DOWN == BTN_INACTIVE) && (BUTTON_UP == BTN_ACTIVE))
+	else if((BUTTON_UP == BTN_ACTIVE) && (BUTTON_DOWN == BTN_INACTIVE) )
 	{		
-		luw_time_button++;	             /*Increases time to 10 milliseconds*/
-		if(luw_time_button>=TEN_MILLISECONDS)
+		lub_time_button++;	             /*Increases time to 10 milliseconds*/
+		if(lub_time_button>=TEN_MILLISECONDS)
 		{
+			lub_time_button=ZERO_MILLISECONDS;    /* Reset time*/
 			rub_State=SELECTOR_UP;
 		}
 		
@@ -130,6 +133,6 @@ void Evaluate_bounce_button(void)
 			
 	else
 	{
-		luw_time_button=ZERO_MILLISECONDS;
+		lub_time_button=ZERO_MILLISECONDS;       /* Reset time*/
 	}
 }    /* End Evaluate_bounce_button*/

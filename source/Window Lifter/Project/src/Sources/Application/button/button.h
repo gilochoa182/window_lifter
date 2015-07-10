@@ -26,6 +26,11 @@
 
 /* Includes */
 
+/*-- Defines -----------------------------------------------------------------*/
+
+#define ZERO_MILLISECONDS           0
+#define TEN_MILLISECONDS            10
+
 
 /* Exported types and constants */
 /* ---------------------------- */
@@ -39,6 +44,16 @@
 /*==================================================*/ 
 /* BYTE constants */
 
+enum ESTATUS
+{
+	IDLE,
+	MANUAL_UP,
+	MANUAL_DOWN,
+	SELECTOR_UP,
+	SELECTOR_DOWN,
+	ANTIPINCH,
+	DELAY_5_SECONDS
+};
 
 /* WORD constants */
 
